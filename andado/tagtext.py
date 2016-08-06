@@ -28,11 +28,11 @@ class TagText(object):
 
         >>> TagText(datetime.datetime(2004, 7, 9, 21, 32, 44),
         ...         41.2, 1.01, 'This text with  words').fname()
-        './2004-07-09-213244-this-text-with.txt'
+        './2004/2004-07-09-213244-this-text-with.txt'
         """
         return meta_fname(self._date,
                           self.text.replace('\n', ' ').lower().split(),
-                          dirname) + '.txt'
+                          dirname, 'txt')
 
 
 def _doctest():

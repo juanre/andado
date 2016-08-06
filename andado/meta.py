@@ -52,6 +52,7 @@ def meta_fname(date, keywords, dirname, ext):
 def photo_fname(org_fname, keywords, dirname, ext):
     return meta_fname(from_photo(org_fname)[0], keywords, dirname, ext)
 
+
 def main():
     import sys
     print from_photo(sys.argv[1])
