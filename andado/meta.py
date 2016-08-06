@@ -36,18 +36,26 @@ def from_photo(fname):
     return _date(fname), _position(fname), _md5(fname)
 
 
-def meta_fname(date, keywords, dirname):
+def meta_fname(date, keywords, dirname, ext):
     if len(keywords) > 3:
         keywords = keywords[:3]
+    dirname = os.path.join(dirname, date.strftime('%Y'))
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+    if ext:
+        ext = '.' + ext
     return os.path.join(dirname,
                         date.strftime('%Y-%m-%d-%H%M%S') +
-                        '-'.join([''] + keywords))
+                        '-'.join([''] + keywords)) + ext
 
 
+def photo_fname(org_fname, keywords, dirname, ext):
+    return meta_fname(from_photo(org_fname)[0], keywords, dirname, ext)
 
 def main():
     import sys
     print from_photo(sys.argv[1])
+    print meta_fname(from_photo(sys.argv[1])[0], [], '.')
 
 
 if __name__ == '__main__':
