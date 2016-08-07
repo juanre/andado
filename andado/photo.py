@@ -36,18 +36,18 @@ def photocp(fromdir, todir, copied_pickle, rawdir='', newname=False):
                         n_copied += 1
                         copied[md5] = fullname
 
-                        tofile = todir
+                        tofile = os.path.join(todir, 'cp')
                         raw_tofile = raw_todir
                         if newname:
                             baseout = meta.photo_fname(fullname, [], '', '')
                             tofile = os.path.join(todir, baseout + '.jpg')
                             raw_tofile = os.path.join(raw_todir,
                                                       baseout + '.raf')
-                        else:
-                            if not os.path.exists(todir):
-                                os.makedirs(todir)
-                            if not os.path.exists(raw_todir):
-                                os.makedirs(raw_todir)
+                        # else:
+                        #     if not os.path.exists(os.path.dirname(tofile)):
+                        #         os.makedirs(os.path.dirname(tofile))
+                        #     if not os.path.exists(raw_todir):
+                        #         os.makedirs(raw_todir)
 
                         print fullname, '->', tofile,
 
@@ -92,7 +92,7 @@ def main_photocp():
 
 def main_photoimport():
     import sys
-    fromdir = os.path.expanduser('~/tmp/dock')
+    fromdir = os.path.expanduser('~/Desktop/photo-export')
     if len(sys.argv) == 2:
         fromdir = sys.argv[1]
     todir = os.path.expanduser('~/Dropbox/master/photos')
