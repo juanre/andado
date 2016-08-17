@@ -40,8 +40,6 @@ def meta_fname(date, keywords, dirname, ext):
     if len(keywords) > 3:
         keywords = keywords[:3]
     dirname = os.path.join(dirname, date.strftime('%Y'))
-    if not os.path.exists(dirname):
-        os.makedirs(dirname)
     if ext:
         ext = '.' + ext
     return os.path.join(dirname,

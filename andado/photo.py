@@ -36,13 +36,17 @@ def photocp(fromdir, todir, copied_pickle, rawdir='', newname=False):
                         n_copied += 1
                         copied[md5] = fullname
 
-                        tofile = os.path.join(todir, 'cp')
+                        tofile = os.path.join(todir, 'jpg')
                         raw_tofile = raw_todir
                         if newname:
                             baseout = meta.photo_fname(fullname, [], '', '')
                             tofile = os.path.join(todir, baseout + '.jpg')
                             raw_tofile = os.path.join(raw_todir,
                                                       baseout + '.raf')
+                        else:
+                            if not os.path.exists(tofile):
+                                os.makedirs(tofile)
+
                         # else:
                         #     if not os.path.exists(os.path.dirname(tofile)):
                         #         os.makedirs(os.path.dirname(tofile))
