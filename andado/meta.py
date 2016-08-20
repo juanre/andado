@@ -36,14 +36,6 @@ def from_photo(fname):
     return _date(fname), _position(fname), _md5(fname)
 
 
-def meta_fname(date, keywords, dirname):
-    if len(keywords) > 3:
-        keywords = keywords[:3]
-    return os.path.join(dirname,
-                        date.strftime('%Y-%m-%d-%H%M%S') +
-                        '-'.join([''] + keywords))
-
-
 
 def main():
     import sys

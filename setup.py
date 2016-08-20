@@ -21,7 +21,8 @@ setup(name='andado',
       entry_points={'console_scripts': ['andado = andado.traverse:main']},
       # package_data={'andado': ['res/diagonal.npy', 'res/*.txt']},
       install_requires=[ # 'numpy>=1.9.0'
-          'dateutil>=1.5'
+          'dateutil>=1.5',
+          'googlemaps>=2.4.2'
       ],
       # Classifiers: https://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=["Programming Language :: Python :: 2",
